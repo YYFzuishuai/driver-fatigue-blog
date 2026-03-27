@@ -3,11 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver Fatigue Blog</title>
+  <meta name="description" content="A long-form academic blog on driver fatigue detection via computer vision in in-vehicle integrated machine learning systems.">
+  <title>Driver Fatigue Detection via Computer Vision in In-Vehicle Integrated Machine Learning Systems</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Driver Fatigue Blog</h1>
-  <p>Site setup in progress.</p>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">Coursework Academic Blog</p>
+      <h1>Driver Fatigue Detection via Computer Vision in In-Vehicle Integrated Machine Learning Systems</h1>
+      <p class="subtitle">How machine learning can address driver fatigue and why privacy, fairness, trust, and responsibility must remain central to deployment</p>
+      <div class="hero-meta" aria-label="Article metadata">
+        <p><span>Format</span> Long-form academic commentary</p>
+        <p><span>Focus</span> Computer vision, embedded ML, and responsible deployment</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-shell">
+      <aside class="toc-panel" aria-labelledby="toc-title">
+        <div class="toc-card">
+          <p class="toc-label">Contents</p>
+          <h2 id="toc-title">Table of Contents</h2>
+          <nav aria-label="Table of contents">
+            <ol>
+              <li><a href="#intro">Opening</a></li>
+              <li><a href="#difficulty">Why the domain is difficult</a></li>
+              <li><a href="#strategies">From vague AI claims to concrete ML strategies</a></li>
+              <li><a href="#strategy-1">Strategy 1: Cue engineering</a></li>
+              <li><a href="#strategy-2">Strategy 2: CNN-based spatial learning</a></li>
+              <li><a href="#strategy-3">Strategy 3: Spatio-temporal inference</a></li>
+              <li><a href="#strategy-4">Strategy 4: Fusion and adaptation</a></li>
+              <li><a href="#strategy-5">Strategy 5: Deployment-aware optimisation</a></li>
+              <li><a href="#ethics">Why ethics cannot be an afterthought</a></li>
+              <li><a href="#privacy">Privacy and function creep</a></li>
+              <li><a href="#fairness">Fairness and unequal protection</a></li>
+              <li><a href="#explainability">Explainability and contestability</a></li>
+              <li><a href="#trust">Trust and behavioural calibration</a></li>
+              <li><a href="#responsibility">Responsibility and governance</a></li>
+              <li><a href="#reflections">Final reflections</a></li>
+              <li><a href="#references">References and further reading</a></li>
+            </ol>
+          </nav>
+        </div>
+      </aside>
+
+      <article class="article-card">
+        <section id="intro" class="article-section">
+          <p class="section-kicker">Opening</p>
+          <p>Road safety is one of those areas where seemingly small failures in attention can have very large consequences. Among the many risk factors that affect driving, fatigue remains particularly difficult to manage because it develops gradually, manifests unevenly across individuals, and may not be recognised until performance has already deteriorated. A driver does not suddenly switch from fully alert to obviously dangerous. Instead, vigilance, reaction time, gaze stability, and decision-making may decline over time, often in ways that are subtle at first and only partially visible.</p>
+          <p>This is one reason why driver fatigue detection has attracted growing attention as an application of computer vision and machine learning. The idea is appealing: if a vehicle can monitor visible behavioural signs of declining alertness early enough, it may be able to warn the driver, recommend a break, or support a broader safety system before a critical event occurs. In practical terms, this means using in-cabin visual sensing to detect patterns such as prolonged eye closure, altered blink behaviour, yawning, unstable gaze, or changes in head pose, and then using these signals to estimate whether the driver may be entering a risky state.</p>
+          <p>At first glance, this may seem like a straightforward classification task. A camera watches the driver, a model analyses the input, and the system decides whether the driver is awake or drowsy. However, this framing is too simple. Driver fatigue detection is not just a matter of recognising a face or assigning a label to an image. It is better understood as an integrated machine learning systems problem in which sensing, feature representation, temporal reasoning, embedded deployment, and human-centred intervention must all work together. What makes the task difficult is not only the visual complexity of the driver's face or behaviour, but also the fact that fatigue itself is a latent state. It cannot be directly observed. It must be inferred from imperfect behavioural evidence, often under harsh real-world constraints.</p>
+          <p>This blog examines that problem in three parts. First, it explains why driver fatigue detection is such a challenging application domain, even before model selection is considered. Second, it describes the main ML strategies used in this field and shows why they must be defined concretely rather than discussed only in vague terms. Third, it argues that ethical issues, especially privacy, fairness, explainability, trust, and responsibility, are not optional additions to a technical system, but central components of responsible implementation. The broader argument is simple: the value of ML-based fatigue detection depends not only on whether it can identify fatigue-related cues, but on whether it can be deployed in ways that are technically robust, ethically responsible, and appropriate for real vehicle environments.</p>
+          <div class="insight-box">
+            <p class="insight-label">Key Insight</p>
+            <p>Driver fatigue detection is best treated as an integrated systems problem: the challenge lies not only in visual recognition, but in temporal reasoning, embedded deployment, and ethically acceptable intervention.</p>
+          </div>
+          <figure class="figure-block">
+            <div class="figure-placeholder" role="img" aria-label="Placeholder for an introduction overview figure">
+              <span>Placeholder figure</span>
+              <strong>images/intro-overview.png</strong>
+            </div>
+            <figcaption>Figure 1. Introduction overview figure showing the relationship between in-cabin sensing, fatigue cue interpretation, model inference, and driver-facing intervention.</figcaption>
+          </figure>
+        </section>
+
+        <section id="difficulty" class="article-section">
+          <p class="section-kicker">Part I</p>
+          <h2>Why driver fatigue detection is such a difficult application domain</h2>
+          <p>One of the most important starting points is that fatigue is not directly visible in the way a traffic sign or a lane marking might be. A camera can capture facial appearance, eye state, gaze direction, head movement, or mouth opening. It cannot directly capture <em>fatigue</em> as a discrete object. This means the task is always inferential. The system must reason from behavioural correlates to a hidden condition of declining alertness.</p>
+          <p>That distinction matters because no single visible cue is sufficient in all cases. A blink may be normal. A yawn may simply reflect boredom or a temporary physiological response rather than a serious safety risk. A downward head movement might suggest drowsiness, but it might also reflect momentary distraction or an unrelated action. If a system treats any one of these cues in isolation as decisive, it will often be wrong. Fatigue detection therefore involves interpreting uncertain evidence rather than identifying a stable and self-evident visual signature.</p>
+          <p>The problem becomes even more difficult when one considers that fatigue unfolds over time. Many of the most meaningful indicators are not defined by a single frame, but by persistence, trend, or repetition. One closed-eye frame is not necessarily dangerous. A prolonged closure over multiple frames may be. One yawn is not the same as repeated yawning alongside unstable gaze and reduced facial responsiveness. A system that only inspects images one by one may therefore miss precisely the temporal structure that makes fatigue meaningful.</p>
+          <p>This is why driver fatigue detection is often better thought of as a risk estimation problem than a simple binary classification problem. In practice, the system is not just asking, <q>Is the driver drowsy right now?</q> It is asking something closer to, <q>Given a sequence of observed cues under current conditions, how likely is it that the driver's alertness has declined to a level that matters for safety?</q> That kind of judgement is inherently noisy and context-sensitive.</p>
+          <p>The application domain also introduces practical difficulties that are easy to underestimate when discussing the task abstractly. Real vehicles are not controlled laboratories. Lighting can change dramatically across day and night conditions, tunnels, glare, shadows, and weather. Drivers may wear glasses or sunglasses. Faces may be partially occluded by hand movements, head turns, or camera angle. Different drivers blink differently, yawn differently, and express fatigue differently. What looks like a strong indicator for one person may be much weaker for another. A model trained on a narrow subset of drivers or operating conditions may therefore appear strong in benchmarking but perform poorly in real use.</p>
+          <p>Data quality introduces another complication. In many vision tasks, labels are tied to directly visible objects or events. In fatigue detection, labels are often only proxies for a latent state. Datasets may be based on staged behaviour, manually assigned fatigue categories, or behavioural indicators that are themselves imperfect. This does not make the datasets useless; they are essential for progress. But it does mean that the system is being trained on labels that may not correspond perfectly to the real psychological or physiological state it is supposed to infer. This weakens the apparent certainty of model performance and complicates evaluation.</p>
+          <p>Then there is the issue of deployment. A fatigue detector in a real vehicle often has to run continuously, locally, and in real time. It cannot assume unlimited memory, unlimited computation, or stable cloud connectivity. It may need to process video streams on embedded hardware while remaining responsive enough for time-sensitive warnings. Latency, efficiency, power consumption, and robustness therefore become core parts of the problem definition. A model that performs well offline but is too heavy or too unstable for in-vehicle use is not, in practical terms, a good solution.</p>
+          <p>All of this explains why machine learning is attractive in this domain. The problem is too visually variable, too temporally structured, and too context-sensitive to be addressed adequately by simplistic rules alone. ML methods can learn richer representations from complex visual data, integrate multiple behavioural signals, and adapt more flexibly than fixed threshold systems. Yet saying <q>machine learning helps</q> is still far too vague. To understand what is actually being done in this field, the ML strategies themselves need to be described concretely.</p>
+        </section>
+
+        <section id="strategies" class="article-section">
+          <p class="section-kicker">Part II</p>
+          <h2>From vague AI claims to concrete ML strategies</h2>
+          <p>One of the key points raised in the feedback on the earlier summary was that the ML strategies used in this domain must be defined concretely. That requirement is entirely justified. In discussions of AI applications, it is easy to slip into language that sounds sophisticated but says very little. Terms such as <q>AI-based fatigue detection</q> or <q>intelligent driver monitoring</q> may sound convincing, but they do not explain how the system works, what assumptions it makes, or what kinds of failures it is vulnerable to.</p>
+          <p>In driver fatigue detection, different ML strategies correspond to different answers to several core questions. What information should the system focus on? Should it rely on explicit facial cues or learn directly from raw images? Should it treat each frame independently, or should it model temporal progression? Should it depend on one dominant signal, such as eye closure, or fuse multiple cues together? Should it prioritise raw predictive performance, or should it prioritise efficiency and deployability on embedded hardware?</p>
+          <p>Seen this way, <q>ML strategy</q> is not a fashionable label. It refers to a specific modelling choice about representation, temporal reasoning, cue integration, and system constraints. In this domain, the main strategy families can be grouped into five broad categories: cue engineering with classical machine learning, end-to-end spatial representation learning with CNNs, spatio-temporal models for sequential inference, multi-cue fusion and condition adaptation, and deployment-aware or lightweight optimisation.</p>
+          <p>These strategies also map onto the practical difficulties discussed earlier. Cue-based systems support interpretability and lightweight inference. CNN-based systems improve representation learning under complex appearance variation. Temporal models address the sequential nature of fatigue. Fusion methods handle heterogeneous behavioural symptoms. Deployment-aware strategies respond to real-time embedded constraints. The point is not that one of these families is universally superior. Rather, each strategy reflects a different way of framing the problem, and each comes with its own strengths and limitations.</p>
+          <div class="insight-box muted">
+            <p class="insight-label">Framing Point</p>
+            <p>In this field, a modelling strategy is a concrete answer to practical questions about representation, time, fusion, and deployment, not a vague reference to AI capability.</p>
+          </div>
+        </section>
+
+        <section id="strategy-1" class="article-section">
+          <h2>Strategy 1: Cue engineering with classical machine learning</h2>
+          <p>A traditional but still important strategy is to begin with explicit fatigue-related cues and then apply a lightweight classifier. In these systems, facial landmarks are first detected, after which hand-crafted variables are computed. Common examples include the eye aspect ratio, mouth aspect ratio, blink rate, PERCLOS, or head-pose descriptors. These features are then passed to a conventional model such as a support vector machine, random forest, or shallow neural network.</p>
+          <p>This approach remains meaningful for several reasons. First, it is computationally efficient. Since the model works on a small number of engineered features rather than high-dimensional image tensors, it can often be implemented with relatively modest hardware. That makes it attractive for embedded deployment, especially in systems where continuous operation is important.</p>
+          <p>Second, this strategy is comparatively interpretable. If the system issues an alert, it may be possible to explain that decision in terms of prolonged eye closure, increased blink duration, repeated yawning, or head instability. In a safety-critical setting, that kind of transparency has real value. Engineers can inspect which cues are driving the output, and users may find the system's reasoning easier to understand.</p>
+          <p>Third, cue engineering aligns well with long-standing domain knowledge. Humans already describe drowsiness in terms of eyes, mouth, gaze, and head posture. A cue-based pipeline formalises those intuitions into measurable variables and then lets the classifier learn how they relate to fatigue-related states.</p>
+          <p>But this strategy also has real weaknesses. It depends heavily on upstream landmark detection and facial analysis. If the eye region is partially occluded, if the head turns significantly, or if lighting conditions degrade landmark stability, the system may produce poor features before the classifier even begins its work. In such cases, the classifier is not failing because it is unintelligent; it is failing because the input representation has already deteriorated.</p>
+          <p>There is also a broader limitation: hand-crafted features may not capture all the subtle visual information relevant to fatigue. They reflect what designers think matters, not necessarily everything that the data might reveal. This is one reason why the field increasingly moved toward learned representations.</p>
+          <figure class="figure-block">
+            <div class="figure-placeholder" role="img" aria-label="Placeholder for a classical fatigue detection pipeline figure">
+              <span>Placeholder figure</span>
+              <strong>images/classical-pipeline.png</strong>
+            </div>
+            <figcaption>Figure 2. Classical fatigue-detection pipeline figure: facial landmark extraction, hand-crafted cue generation, lightweight classification, and warning logic.</figcaption>
+          </figure>
+        </section>
+
+        <section id="strategy-2" class="article-section">
+          <h2>Strategy 2: End-to-end spatial representation learning with CNNs</h2>
+          <p>A second major strategy is to replace hand-crafted feature extraction with convolutional neural networks. Rather than relying on manually designed geometric ratios, these models learn discriminative visual features directly from image regions such as the face, the eyes, or multiple cropped areas of interest.</p>
+          <p>This change matters because fatigue-related appearance is often more nuanced than a few scalar measurements can express. The difference between a normal blink and a fatigue-related eyelid pattern may involve textures, shapes, and local spatial context that are hard to reduce to a single ratio. A CNN can learn filters that respond to these differences directly from the data. It can capture richer visual structure and potentially become more robust to small variations that would undermine simpler handcrafted pipelines.</p>
+          <p>CNN-based approaches are therefore especially useful when the problem is framed as one of spatial representation learning. The system learns which visual features are informative instead of receiving them in manually designed form. This often improves flexibility and performance in settings where appearance variation is substantial.</p>
+          <p>However, a purely spatial CNN still has a limitation that is particularly important in fatigue detection: it typically treats each frame largely in isolation. It can be very good at recognising whether the eyes appear open or closed in one frame, or whether the mouth appears open in another, but fatigue itself is not usually a one-frame event. What matters is often how these signals develop and persist across time. This means that even strong spatial CNNs may not be enough on their own.</p>
+          <p>In that sense, CNN-based spatial learning is a major improvement over rigid cue engineering, but it is not the full solution. It solves part of the problem, representation of complex visual appearance, while leaving open the question of temporal reasoning.</p>
+        </section>
+
+        <section id="strategy-3" class="article-section">
+          <h2>Strategy 3: Spatio-temporal models for sequential fatigue inference</h2>
+          <p>Because fatigue is expressed over time, one of the most important strategy families in this domain is explicit temporal modelling. The core idea is that the system should not only examine what is visible in the current frame, but also learn how those cues evolve across consecutive frames.</p>
+          <p>One way to do this is through 3D CNNs, which extend convolution into the temporal dimension. Instead of treating each frame independently, a 3D CNN processes a short sequence of frames together and learns motion-sensitive spatio-temporal patterns. This makes it possible to encode changes over time directly within the feature extraction process.</p>
+          <p>Another common approach is to separate spatial encoding from temporal aggregation. In this design, a CNN first extracts frame-level visual features, and a recurrent model such as an LSTM then aggregates those features over time. This allows the model to maintain a hidden representation of recent context and distinguish transient actions from sustained risk patterns.</p>
+          <p>This strategy is especially important because many operationally relevant fatigue cues are defined by duration. A single closed-eye frame is not necessarily dangerous; a prolonged closure over multiple frames may be. A single yawn may be harmless; repeated yawning over a longer interval may be meaningful. Gaze instability, eye closure, and head behaviour often need to be interpreted not as isolated events but as evolving patterns.</p>
+          <p>Spatio-temporal models are therefore more faithful to the structure of the task than purely spatial classifiers. They better capture the fact that fatigue is gradual, uncertain, and sequential. In practical terms, they also help reduce the brittleness that can arise when a system reacts too strongly to a single momentary event.</p>
+          <p>At the same time, temporal modelling introduces its own challenges. Sequence models are often heavier than frame-level models, more complex to train, and sensitive to choices about time windows, hidden-state design, or temporal pooling. In embedded settings, those costs matter. So while spatio-temporal methods are conceptually well matched to fatigue detection, they must still be integrated carefully within broader system constraints.</p>
+          <div class="insight-box">
+            <p class="insight-label">Why Time Matters</p>
+            <p>Temporal reasoning helps distinguish transient behaviour from sustained safety risk, which is crucial when fatigue signals emerge gradually rather than as single-frame events.</p>
+          </div>
+          <figure class="figure-block">
+            <div class="figure-placeholder" role="img" aria-label="Placeholder for a CNN-LSTM or spatio-temporal architecture figure">
+              <span>Placeholder figure</span>
+              <strong>images/cnn-lstm-architecture.png</strong>
+            </div>
+            <figcaption>Figure 3. CNN-LSTM or broader spatio-temporal architecture figure showing frame-level spatial encoding followed by temporal aggregation for fatigue-risk estimation.</figcaption>
+          </figure>
+        </section>
+
+        <section id="strategy-4" class="article-section">
+          <h2>Strategy 4: Multi-cue fusion, auxiliary tasks, and condition adaptation</h2>
+          <p>Another key family of strategies arises from the fact that fatigue is heterogeneous. Not every driver expresses it in the same way. Some drivers primarily show signs through the eyes, others through yawning, head movement, or more diffuse behavioural changes. A robust system therefore should not rely too heavily on a single signal source.</p>
+          <p>This motivates multi-cue fusion. Instead of making the final decision from one channel alone, the system combines multiple cue-specific representations. Eye behaviour, mouth behaviour, head pose, and other contextual features can be integrated into a joint model. This reduces reliance on any one unstable source and makes the system more resilient when one cue becomes unreliable due to occlusion, lighting, or individual variation.</p>
+          <p>Related to fusion is multi-task learning. In this framework, the model is trained not only on the final fatigue label but also on auxiliary tasks such as eye-state recognition, yawn detection, landmark localisation, or scene-condition understanding. The intuition is that these auxiliary tasks encourage the network to learn richer intermediate structure rather than mapping pixels directly to a fatigue label in a brittle way. The representation becomes anchored in semantically meaningful subproblems.</p>
+          <p>Condition-adaptive learning addresses another practical difficulty: the fact that the effective data distribution changes across lighting, occlusion, and subject characteristics. A model that performs well in one operating condition may generalise poorly in another. By explicitly adapting the learned representation to different conditions, the system can become less brittle in deployment.</p>
+          <p>These strategies are important because they move the field beyond the idea that a single best cue or a single best model will solve the problem. In reality, fatigue detection often benefits from combining complementary information, supporting intermediate structure, and explicitly addressing the variability of real use conditions.</p>
+        </section>
+
+        <section id="strategy-5" class="article-section">
+          <h2>Strategy 5: Deployment-aware and lightweight optimisation</h2>
+          <p>A final major strategy concerns deployability. In-vehicle fatigue detection is not useful if the model is accurate but too slow, too heavy, or too power-hungry to run continuously on embedded hardware. This is why deployment-aware optimisation should itself be regarded as an ML strategy rather than an afterthought.</p>
+          <p>This includes methods such as model compression, knowledge distillation, efficient inference design, transfer learning into smaller architectures, and restricted processing of regions of interest rather than full-frame analysis. In practical terms, such strategies determine whether the system can run continuously in real time and whether it can be trusted to remain operational in a vehicle rather than only in an offline experimental setting.</p>
+          <p>This point matters because it shifts attention away from benchmark performance alone. In many ML domains, it is tempting to assume that the best model is simply the one with the best evaluation score. In fatigue detection, that is often too simplistic. A slightly less accurate model that runs efficiently and reliably on embedded hardware may be more valuable than a heavier model that performs better in offline testing but cannot support robust real-world use.</p>
+          <p>Deployment-aware optimisation therefore belongs alongside representation learning and temporal modelling as one of the central ML choices in the domain. The system is not complete until it can function continuously under the constraints that define its intended setting.</p>
+          <p>Taken together, these five strategy families show why the phrase <q>ML strategy</q> must be taken seriously. In this domain, progress does not come from vague invocations of AI. It comes from concrete decisions about what to represent, how to reason across time, how to combine cues, how to adapt to variable conditions, and how to satisfy embedded deployment constraints.</p>
+        </section>
+
+        <section id="ethics" class="article-section">
+          <p class="section-kicker">Part III</p>
+          <h2>Why ethics cannot be an afterthought</h2>
+          <p>The technical side of the problem is important, but it is not sufficient. In fact, one of the most important conclusions of the report is that ethical issues are not peripheral to driver fatigue detection. They are central to implementation.</p>
+          <p>A fatigue detector is not simply a passive perception system. It continuously observes a driver in a confined and often intimate space, infers a latent behavioural state from bodily signals, and may trigger warnings or other actions in response. In other words, it is also a form of behavioural surveillance embedded in a safety-critical environment. The ethical question is therefore not whether ethics should be added after technical development is finished. The ethical question is how the system should be designed from the start so that its operation is acceptable, justifiable, and accountable.</p>
+          <p>This matters because predictive performance alone is ethically insufficient. A model may score highly on benchmark datasets and still be problematic in practice if it is overly intrusive, systematically less reliable for some drivers, too opaque to understand, or likely to generate mistrust and harmful side effects. A strong technical result is not the same thing as a responsibly deployable system.</p>
+          <p>To make this clearer, it helps to think of fatigue detection as involving several values at once: safety benefit, privacy intrusion, disparity across users, opacity of intervention logic, and the calibration of trust. These dimensions cannot be collapsed into a single performance score. A system that improves one dimension while seriously harming another may not be ethically acceptable overall. This is why privacy, fairness, explainability, trust, and responsibility must be treated as design requirements rather than after-the-fact constraints.</p>
+        </section>
+
+        <section id="privacy" class="article-section">
+          <h2>Privacy, in-cabin surveillance, and function creep</h2>
+          <p>The most immediate ethical issue is privacy. Vision-based fatigue detection depends on continuous in-cabin sensing, often focused on the face, the eyes, gaze patterns, and head movement. Even if the goal is narrowly defined as safety, the practical consequence is that the interior of the vehicle becomes a monitored space in which intimate behavioural signals are rendered machine-readable.</p>
+          <p>This raises an important distinction between data collection and behavioural inference. The privacy problem is not merely that images or video are captured. It is also that those visual inputs are interpreted as evidence about the driver's internal state. In this sense, the system is not just watching the driver. It is turning aspects of embodied behaviour into operational signals.</p>
+          <p>A second privacy concern is function creep. A system introduced as a safety feature may later be extended to insurance scoring, employer oversight in commercial fleets, law-enforcement access, emotional analysis, or more general behavioural analytics. Once the sensing and inferential pipeline exists, the step from narrow safety monitoring to broader surveillance may become technically easy, even if it is ethically profound.</p>
+          <p>This matters especially in workplace contexts. A commercial driver may not experience such monitoring as a voluntary assistance feature but as a condition of employment. In that setting, the ethical issue extends beyond informational privacy to autonomy, dignity, and power imbalance.</p>
+          <p>For these reasons, privacy in this domain should be treated as a system design issue. Privacy-preserving feature extraction, on-device inference, minimal data retention, explicit restrictions on secondary use, and carefully controlled access are all relevant. A fatigue detector should not assume maximal identifiability or unlimited repurposing by default.</p>
+        </section>
+
+        <section id="fairness" class="article-section">
+          <h2>Fairness, demographic bias, and unequal protection</h2>
+          <p>Another major ethical challenge is fairness. The technical discussion already established that fatigue detection is vulnerable to inter-subject variability, variable lighting, occlusion, and imperfect training data. Ethically, this becomes a fairness problem when those weaknesses align systematically with differences across users.</p>
+          <p>A detector may work less reliably for drivers whose facial appearance is less well represented in the training data, whose eyewear causes more occlusion, whose skin tone interacts badly with illumination-sensitive pipelines, or whose behavioural style differs from what the model expects. In such cases, the issue is not only that the model is less accurate. It is that some users receive less dependable safety protection than others.</p>
+          <p>This is why fairness in this domain should be understood as reliability parity under realistic operating conditions. The relevant question is not simply whether the model seems fair on average, but whether different groups of drivers receive comparably reliable assistance in the conditions where the system will actually be used.</p>
+          <p>That implies subgroup-aware evaluation, diversified datasets, stress testing under varied lighting and occlusion conditions, and honest reporting of failure modes. A model that performs well in aggregate but poorly for certain users may still be ethically unacceptable if its claimed purpose is to improve safety.</p>
+          <p>In this sense, fairness is not an abstract add-on. It is part of determining whether the technology provides equal protection or reproduces uneven vulnerability.</p>
+        </section>
+
+        <section id="explainability" class="article-section">
+          <h2>Explainability, contestability, and intervention logic</h2>
+          <p>Explainability is also essential. In a safety-critical setting, a warning matters not only because it is issued, but because the driver can understand why it happened and what it implies. Fatigue detection is always inferential. The system is making a judgement about a latent state under uncertainty, not observing an indisputable fact.</p>
+          <p>For that reason, explainability should not be reduced to technical visualisations aimed only at developers. What matters ethically is whether the system's behaviour is intelligible at the level of user interaction and operational policy. A driver should be able to understand, at least in broad terms, whether an alert was triggered by prolonged eye closure, repeated yawning, unstable gaze, or a persistent combination of cues. The intervention logic itself should also be understandable: what threshold was crossed, whether persistence mattered, and what response is expected.</p>
+          <p>This connects directly to contestability. False positives and false negatives are not just technical errors; they can have moral and practical consequences. A false negative may fail to protect a fatigued driver and other road users. A false positive may create distraction, undermine trust, or trigger unfair consequences in occupational settings. Systems that issue consequential outputs should therefore allow routes for understanding, questioning, and contesting those outputs.</p>
+          <p>Without intelligibility and contestability, the technology risks becoming not just opaque, but socially unaccountable.</p>
+          <div class="insight-box muted">
+            <p class="insight-label">Design Implication</p>
+            <p>An alert should communicate more than a verdict. It should expose enough logic for the driver or operator to understand what kind of evidence led to intervention.</p>
+          </div>
+        </section>
+
+        <section id="trust" class="article-section">
+          <h2>Trust, false alarms, and behavioural miscalibration</h2>
+          <p>Trust is another central issue. A good fatigue detection system should not merely be trusted; it should be trusted appropriately. Over-trust can lead to complacency, while under-trust can lead users to ignore useful warnings. This means system errors matter not only because they reduce technical performance, but because they shape the human relationship to the technology.</p>
+          <p>False alarms are a particularly important example. A system that produces frequent nuisance warnings may quickly be dismissed or ignored, even if it is correct in other cases. Conversely, repeated misses can create misplaced confidence. Two systems with similar benchmark accuracy may therefore produce very different trust outcomes depending on how they fail, how they present alerts, and what consequences those alerts carry.</p>
+          <p>This is why intervention design is not just a UX matter. Warning timing, escalation logic, and output format are ethical variables because they affect whether the technology supports user agency or instead creates dependency, irritation, or injustice. A blunt awake/drowsy label may be convenient, but it may also be too simplistic for a problem defined by uncertainty and temporal progression. Graded risk communication may better match both the uncertainty of the inference and the autonomy of the driver.</p>
+          <p>Trust, then, is not just a psychological side effect. It is part of responsible system design.</p>
+        </section>
+
+        <section id="responsibility" class="article-section">
+          <h2>Responsibility, governance, and meaningful human control</h2>
+          <p>The final major ethical issue is responsibility. Once fatigue detection is integrated into a wider vehicle or fleet system, accountability becomes distributed across many elements: data collection, model design, threshold setting, interface design, organisational policy, and human response.</p>
+          <p>The key ethical question is therefore not only who should be blamed if the system fails, but who had responsibility for anticipating foreseeable harms, controlling misuse, calibrating interventions, and designing the system in a way that remains intelligible and governable. That is a much broader and more important question than post hoc blame assignment.</p>
+          <p>This becomes especially salient when fatigue monitoring is linked to semi-automated driving or takeover support. In those settings, the system may influence warnings, readiness assumptions, or transitions of control. Monitoring outputs can therefore become entangled with broader judgments about who is responsible for safety at a given moment.</p>
+          <p>That is why the idea of meaningful human control matters here. System behaviour should remain understandable, traceable to responsible design choices, and supportive of human oversight rather than silently substituting machine judgement for accountable decision-making. A fatigue detector that is accurate but poorly governed, opaque in use, or impossible to challenge may still be ethically deficient.</p>
+          <p>Taken together, these ethical issues show that responsible implementation cannot be reduced to a performance target. Privacy, fairness, explainability, trust, and governance are part of what it means to build a fatigue detection system responsibly.</p>
+        </section>
+
+        <section id="reflections" class="article-section">
+          <p class="section-kicker">Conclusion</p>
+          <h2>Final reflections</h2>
+          <p>Driver fatigue detection via computer vision is a promising application of integrated machine learning systems for transport safety, but it should not be understood as a narrow image-classification problem. The challenge is not only to recognise fatigue-related visual patterns, but also to align sensing, temporal reasoning, model design, embedded deployment, and human-centred intervention under real operational constraints.</p>
+          <p>The analysis also shows why ML strategies must be described concretely. In this domain, different strategies correspond to different modelling assumptions and practical priorities. Feature-engineering pipelines remain relevant when interpretability and efficiency matter. CNN-based systems improve spatial representation learning. Recurrent and spatio-temporal models better capture the sequential nature of fatigue. Multi-cue fusion and condition adaptation improve robustness across heterogeneous symptoms and operating conditions. Deployment-aware optimisation is essential for continuous embedded use.</p>
+          <p>At the same time, technical performance is not enough. Because fatigue detection requires continuous in-cabin monitoring and produces behaviourally consequential judgements, privacy, fairness, explainability, calibrated trust, and responsibility must be treated as central components of system design. A detector that performs well on benchmark data may still be ethically poor if it is intrusive, unevenly reliable, opaque in operation, or weakly governed.</p>
+          <p>The broader takeaway is straightforward. The value of ML-based driver fatigue detection depends not only on whether it can identify fatigue-related cues, but on whether it can be deployed in ways that are technically robust, ethically responsible, and appropriate for real vehicles. That is the standard against which progress in this domain should ultimately be judged.</p>
+        </section>
+
+        <section id="references" class="article-section references-section">
+          <p class="section-kicker">References</p>
+          <h2>References and Further Reading</h2>
+          <ol class="reference-list">
+            <li>Soukupova, T., and Cech, J. <em>Real-Time Eye Blink Detection using Facial Landmarks</em>. Useful background for landmark-driven blink analysis and lightweight fatigue-related cue extraction.</li>
+            <li>Research literature on PERCLOS and prolonged eye closure as behavioural indicators of reduced alertness in transport safety contexts.</li>
+            <li>Studies on CNN-based in-cabin monitoring and driver state analysis for learned spatial feature extraction under variable visual conditions.</li>
+            <li>Work on CNN-LSTM, 3D CNN, and related spatio-temporal architectures for sequential fatigue inference from frame streams.</li>
+            <li>Literature on multi-task learning, multimodal cue fusion, and condition adaptation for robust driver monitoring under occlusion and lighting change.</li>
+            <li>Research on efficient deployment, model compression, and embedded inference for always-on vehicle safety systems.</li>
+            <li>Broader scholarship on AI ethics, privacy-preserving machine learning, fairness evaluation, explainability, and accountable automation in mobility systems.</li>
+          </ol>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prepared as a static coursework blog page using plain HTML and CSS for GitHub Pages deployment.</p>
+  </footer>
 </body>
 </html>
