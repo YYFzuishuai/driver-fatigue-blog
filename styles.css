@@ -66,13 +66,14 @@ a {
 
 .hero-ornament {
   position: absolute;
-  top: 3.8rem;
-  right: 2.8rem;
-  width: clamp(15rem, 22vw, 18rem);
+  top: 3.4rem;
+  right: 2.6rem;
+  width: clamp(16rem, 23vw, 19rem);
   aspect-ratio: 1;
   border-radius: 50%;
   pointer-events: none;
-  opacity: 0.95;
+  opacity: 1;
+  z-index: 0;
 }
 
 .hero-orbit,
@@ -84,18 +85,18 @@ a {
 }
 
 .hero-orbit-outer {
-  border: 1.8px solid rgba(139, 94, 52, 0.4);
-  box-shadow: 0 0 0 1.4rem rgba(139, 94, 52, 0.065);
+  border: 2px solid rgba(139, 94, 52, 0.48);
+  box-shadow: 0 0 0 1.6rem rgba(139, 94, 52, 0.08);
 }
 
 .hero-orbit-middle {
   inset: 1.15rem;
-  border: 1px solid rgba(139, 94, 52, 0.22);
+  border: 1.2px solid rgba(139, 94, 52, 0.28);
 }
 
 .hero-orbit-inner {
   inset: 2.4rem;
-  border: 1px dashed rgba(139, 94, 52, 0.22);
+  border: 1.2px dashed rgba(139, 94, 52, 0.28);
 }
 
 .hero-node {
@@ -132,7 +133,7 @@ a {
   transform: rotate(8deg);
 }
 
-.header-inner > * {
+.header-inner > :not(.hero-ornament) {
   position: relative;
   z-index: 1;
 }
@@ -369,24 +370,18 @@ a {
 .reference-list {
   max-width: 48rem;
   margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: reference-item;
+  padding-left: 2rem;
   font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 .reference-list li {
-  display: grid;
-  grid-template-columns: 2.8rem minmax(0, 1fr);
-  column-gap: 0.25rem;
-  align-items: start;
+  padding-left: 0.35rem;
   line-height: 1.75;
-  counter-increment: reference-item;
 }
 
-.reference-list li::before {
-  content: counter(reference-item) ".";
-  color: var(--text);
+.reference-list li::marker {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1, "lnum" 1;
 }
