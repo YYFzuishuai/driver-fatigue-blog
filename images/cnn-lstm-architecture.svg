@@ -1,0 +1,85 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#f8f3ea"/>
+
+  <text x="70" y="70" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="22" font-weight="700" letter-spacing="4">SPATIO-TEMPORAL MODEL</text>
+  <text x="70" y="118" fill="#1e1b18" font-family="Georgia, serif" font-size="28">From frame-level features to sequence-level fatigue inference</text>
+
+  <defs>
+    <linearGradient id="frameShade" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fffdf8"/>
+      <stop offset="100%" stop-color="#f6ede0"/>
+    </linearGradient>
+    <linearGradient id="screenTint" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fbf6ed"/>
+      <stop offset="100%" stop-color="#efe4d2"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(70 226)" font-family="Georgia, serif">
+    <g>
+      <rect width="118" height="112" rx="18" fill="url(#frameShade)" stroke="#ceb997"/>
+      <rect x="16" y="14" width="86" height="64" rx="12" fill="url(#screenTint)" stroke="#dcc8a6"/>
+      <path d="M24 66 Q44 50 64 50 Q82 50 94 60" fill="none" stroke="#d7c3a1" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="62" cy="41" r="11" fill="none" stroke="#bf9153" stroke-width="2.5"/>
+      <path d="M49 54 Q62 48 75 54" fill="none" stroke="#bf9153" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M90 24 Q96 30 97 38" fill="none" stroke="#d9b884" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M89 30 Q95 36 95 45" fill="none" stroke="#d9b884" stroke-width="2" stroke-linecap="round"/>
+      <rect x="37" y="84" width="44" height="6" rx="3" fill="#d6be97" opacity="0.8"/>
+      <text x="18" y="145" fill="#62584d" font-size="18">frame t-2</text>
+    </g>
+
+    <g transform="translate(150 0)">
+      <rect width="118" height="112" rx="18" fill="url(#frameShade)" stroke="#ceb997"/>
+      <rect x="16" y="14" width="86" height="64" rx="12" fill="url(#screenTint)" stroke="#dcc8a6"/>
+      <path d="M24 66 Q44 50 64 50 Q82 50 94 60" fill="none" stroke="#d7c3a1" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="62" cy="41" r="11" fill="none" stroke="#bf9153" stroke-width="2.5"/>
+      <path d="M49 56 Q62 52 75 56" fill="none" stroke="#bf9153" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M28 24 L35 34" stroke="#d9b884" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M35 24 L28 34" stroke="#d9b884" stroke-width="2.2" stroke-linecap="round"/>
+      <rect x="37" y="84" width="44" height="6" rx="3" fill="#d6be97" opacity="0.8"/>
+      <text x="18" y="145" fill="#62584d" font-size="18">frame t-1</text>
+    </g>
+
+    <g transform="translate(300 0)">
+      <rect width="118" height="112" rx="18" fill="url(#frameShade)" stroke="#ceb997"/>
+      <rect x="16" y="14" width="86" height="64" rx="12" fill="url(#screenTint)" stroke="#dcc8a6"/>
+      <path d="M24 66 Q44 50 64 50 Q82 50 94 60" fill="none" stroke="#d7c3a1" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="62" cy="41" r="11" fill="none" stroke="#bf9153" stroke-width="2.5"/>
+      <ellipse cx="62" cy="57" rx="7" ry="5.5" fill="none" stroke="#bf9153" stroke-width="2.5"/>
+      <path d="M89 22 Q95 28 98 36" fill="none" stroke="#d9b884" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M87 30 Q93 36 94 45" fill="none" stroke="#d9b884" stroke-width="2" stroke-linecap="round"/>
+      <rect x="37" y="84" width="44" height="6" rx="3" fill="#d6be97" opacity="0.8"/>
+      <text x="30" y="145" fill="#62584d" font-size="18">frame t</text>
+    </g>
+  </g>
+
+  <g stroke="#8b5e34" stroke-width="5">
+    <line x1="492" y1="289" x2="565" y2="289"/>
+    <line x1="775" y1="289" x2="855" y2="289"/>
+    <line x1="1065" y1="289" x2="1110" y2="289"/>
+  </g>
+  <g fill="#8b5e34">
+    <path d="M565 289 l-16 -10 v20 z"/>
+    <path d="M855 289 l-16 -10 v20 z"/>
+    <path d="M1110 289 l-16 -10 v20 z"/>
+  </g>
+
+  <g font-family="Georgia, serif">
+    <rect x="565" y="220" width="190" height="138" rx="20" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="630" y="278" fill="#1e1b18" font-size="30">CNN</text>
+    <text x="609" y="316" fill="#62584d" font-size="20">spatial encoder</text>
+
+    <rect x="855" y="220" width="200" height="138" rx="20" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="923" y="278" fill="#1e1b18" font-size="30">LSTM</text>
+    <text x="886" y="316" fill="#62584d" font-size="20">temporal memory</text>
+
+    <rect x="1110" y="235" width="60" height="108" rx="16" fill="#fff6ea" stroke="#8b5e34" stroke-width="2"/>
+    <text x="1125" y="279" fill="#1e1b18" font-size="17">risk</text>
+    <text x="1121" y="307" fill="#62584d" font-size="15">score</text>
+  </g>
+
+  <rect x="70" y="485" width="1040" height="120" rx="18" fill="#fffaf2" stroke="#ceb997"/>
+  <text x="100" y="530" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="18" font-weight="700" letter-spacing="2">WHY THIS HELPS</text>
+  <text x="100" y="570" fill="#62584d" font-family="Georgia, serif" font-size="19">The CNN learns visual structure in each frame, while the temporal module</text>
+  <text x="100" y="597" fill="#62584d" font-family="Georgia, serif" font-size="19">judges whether those cues persist and become safety-relevant.</text>
+</svg>

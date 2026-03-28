@@ -1,0 +1,44 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660">
+  <defs>
+    <marker id="arrow" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L5,2.5 L0,5 Z" fill="#8b5e34"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="660" fill="#f8f3ea"/>
+  <text x="70" y="70" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="22" font-weight="700" letter-spacing="4">PRIVACY DATA FLOW</text>
+  <text x="70" y="118" fill="#1e1b18" font-family="Georgia, serif" font-size="30">The privacy issue is not only collection, but downstream reuse</text>
+
+  <g font-family="Georgia, serif">
+    <rect x="80" y="250" width="190" height="102" rx="18" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="175" y="308" text-anchor="middle" fill="#1e1b18" font-size="24">Camera feed</text>
+
+    <rect x="340" y="250" width="230" height="102" rx="18" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="455" y="300" text-anchor="middle" fill="#1e1b18" font-size="23">On-device inference</text>
+    <text x="455" y="332" text-anchor="middle" fill="#62584d" font-size="18">minimal retention</text>
+
+    <rect x="660" y="180" width="220" height="94" rx="18" fill="#fff6ea" stroke="#8b5e34" stroke-width="2"/>
+    <text x="770" y="236" text-anchor="middle" fill="#1e1b18" font-size="23">Driver alert</text>
+
+    <rect x="660" y="330" width="220" height="94" rx="18" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="770" y="386" text-anchor="middle" fill="#1e1b18" font-size="23">Stored signal</text>
+
+    <rect x="960" y="330" width="150" height="94" rx="18" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="1035" y="386" text-anchor="middle" fill="#1e1b18" font-size="21">Secondary use</text>
+  </g>
+
+  <g stroke="#8b5e34" stroke-width="5" fill="none" stroke-linecap="round" marker-end="url(#arrow)">
+    <path d="M270 301 C295 301, 315 301, 340 301"/>
+    <path d="M570 276 C606 258, 628 243, 660 227"/>
+    <path d="M570 326 C606 344, 628 361, 660 377"/>
+    <path d="M880 377 C910 377, 930 377, 960 377"/>
+  </g>
+
+  <text x="885" y="298" text-anchor="middle" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="18" font-weight="700" letter-spacing="2">FUNCTION CREEP RISK</text>
+  <text x="885" y="322" text-anchor="middle" fill="#62584d" font-family="Georgia, serif" font-size="16">when stored inference moves into secondary use</text>
+
+  <rect x="70" y="530" width="1040" height="82" rx="16" fill="#fffaf2" stroke="#ceb997"/>
+  <text x="95" y="568" fill="#62584d" font-family="Georgia, serif" font-size="18">Risk increases when behavioural inference leaves the narrow safety workflow</text>
+  <text x="95" y="594" fill="#62584d" font-family="Georgia, serif" font-size="18">and becomes available for secondary organisational or commercial use.</text>
+</svg>
+

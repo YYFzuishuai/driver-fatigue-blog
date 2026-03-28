@@ -1,0 +1,55 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680">
+  <defs>
+    <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L5,2.5 L0,5 z" fill="#8b5e34"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="680" fill="#f8f3ea"/>
+  <text x="70" y="70" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="22" font-weight="700" letter-spacing="4">FUSION AND ADAPTATION</text>
+  <text x="70" y="118" fill="#1e1b18" font-family="Georgia, serif" font-size="30">Combining heterogeneous cues into one fatigue estimate</text>
+
+  <g font-family="Georgia, serif">
+    <rect x="90" y="220" width="170" height="76" rx="16" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="175" y="267" text-anchor="middle" fill="#1e1b18" font-size="22">Eye cues</text>
+
+    <rect x="90" y="320" width="170" height="76" rx="16" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="175" y="367" text-anchor="middle" fill="#1e1b18" font-size="22">Mouth cues</text>
+
+    <rect x="90" y="420" width="170" height="76" rx="16" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="175" y="467" text-anchor="middle" fill="#1e1b18" font-size="22">Head pose</text>
+
+    <rect x="345" y="255" width="240" height="210" rx="20" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="465" y="320" text-anchor="middle" fill="#1e1b18" font-size="28">Fusion</text>
+    <text x="465" y="360" text-anchor="middle" fill="#62584d" font-size="19">multi-task features</text>
+    <text x="465" y="390" text-anchor="middle" fill="#62584d" font-size="19">condition adaptation</text>
+    <text x="465" y="420" text-anchor="middle" fill="#62584d" font-size="19">robust aggregation</text>
+
+    <rect x="670" y="285" width="210" height="150" rx="20" fill="#fffdf8" stroke="#ceb997"/>
+    <text x="775" y="347" text-anchor="middle" fill="#1e1b18" font-size="26">Joint</text>
+    <text x="775" y="384" text-anchor="middle" fill="#62584d" font-size="20">fatigue estimate</text>
+
+    <rect x="960" y="220" width="150" height="72" rx="16" fill="#fff6ea" stroke="#8b5e34" stroke-width="2"/>
+    <text x="1035" y="264" text-anchor="middle" fill="#1e1b18" font-size="21">Alert</text>
+
+    <rect x="960" y="320" width="150" height="72" rx="16" fill="#fff6ea" stroke="#8b5e34" stroke-width="2"/>
+    <text x="1035" y="364" text-anchor="middle" fill="#1e1b18" font-size="21">Break advice</text>
+
+    <rect x="960" y="420" width="150" height="72" rx="16" fill="#fff6ea" stroke="#8b5e34" stroke-width="2"/>
+    <text x="1035" y="464" text-anchor="middle" fill="#1e1b18" font-size="21">Escalation</text>
+  </g>
+
+  <g stroke="#8b5e34" stroke-width="5" fill="none" stroke-linecap="round" marker-end="url(#arrowhead)">
+    <path d="M260 258 C292 276, 310 292, 345 308"/>
+    <path d="M260 358 C292 358, 310 358, 345 358"/>
+    <path d="M260 458 C292 440, 310 424, 345 408"/>
+    <path d="M585 360 C615 360, 640 360, 670 360"/>
+    <path d="M880 360 C908 330, 922 295, 960 256"/>
+    <path d="M880 360 C910 360, 928 358, 960 356"/>
+    <path d="M880 360 C908 390, 922 425, 960 456"/>
+  </g>
+</svg>
+
+
+
+

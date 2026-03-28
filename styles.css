@@ -214,7 +214,16 @@ a {
 }
 
 .figure-block {
-  margin: 2.5rem 0;
+  margin: 2.75rem 0 3rem;
+}
+
+.figure-image {
+  display: block;
+  width: 100%;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(214, 200, 177, 0.9);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(248, 241, 229, 0.88));
+  box-shadow: 0 12px 30px rgba(47, 35, 20, 0.08);
 }
 
 .figure-placeholder {
@@ -250,9 +259,11 @@ a {
 }
 
 .figure-block figcaption {
+  max-width: 42rem;
   margin-top: 0.9rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.96rem;
+  line-height: 1.65;
 }
 
 .references-section {
@@ -337,6 +348,14 @@ a {
 
   .article-section p {
     font-size: 1rem;
+  }
+
+  .figure-block {
+    margin: 2rem 0 2.4rem;
+  }
+
+  .figure-block figcaption {
+    font-size: 0.92rem;
   }
 
   .figure-placeholder {

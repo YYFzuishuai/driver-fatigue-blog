@@ -1,0 +1,35 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660">
+  <rect width="1200" height="660" fill="#f8f3ea"/>
+  <text x="70" y="70" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="22" font-weight="700" letter-spacing="4">TRUST CALIBRATION</text>
+  <text x="70" y="118" fill="#1e1b18" font-family="Georgia, serif" font-size="30">The goal is neither dismissal nor blind reliance</text>
+
+  <rect x="90" y="235" width="290" height="170" rx="20" fill="#fffdf8" stroke="#ceb997"/>
+  <rect x="455" y="205" width="290" height="230" rx="20" fill="#fff6ea" stroke="#8b5e34" stroke-width="3"/>
+  <rect x="820" y="235" width="290" height="170" rx="20" fill="#fffdf8" stroke="#ceb997"/>
+
+  <g font-family="Georgia, serif">
+    <text x="235" y="287" text-anchor="middle" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="20" font-weight="700" letter-spacing="2">UNDER-TRUST</text>
+    <text x="235" y="340" text-anchor="middle" fill="#62584d" font-size="21">Warnings are ignored after</text>
+    <text x="235" y="370" text-anchor="middle" fill="#62584d" font-size="21">repeated nuisance alarms</text>
+
+    <text x="600" y="258" text-anchor="middle" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="20" font-weight="700" letter-spacing="2">CALIBRATED TRUST</text>
+    <text x="600" y="310" text-anchor="middle" fill="#1e1b18" font-size="22">Warnings are timely, clear,</text>
+    <text x="600" y="340" text-anchor="middle" fill="#1e1b18" font-size="22">and proportionate</text>
+    <text x="600" y="377" text-anchor="middle" fill="#62584d" font-size="18">supports action without</text>
+    <text x="600" y="403" text-anchor="middle" fill="#62584d" font-size="18">creating dependency</text>
+
+    <text x="965" y="287" text-anchor="middle" fill="#8b5e34" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="20" font-weight="700" letter-spacing="2">OVER-TRUST</text>
+    <text x="965" y="340" text-anchor="middle" fill="#62584d" font-size="21">Driver becomes too</text>
+    <text x="965" y="370" text-anchor="middle" fill="#62584d" font-size="21">dependent on the system</text>
+  </g>
+
+  <line x1="380" y1="320" x2="455" y2="320" stroke="#8b5e34" stroke-width="5"/>
+  <line x1="745" y1="320" x2="820" y2="320" stroke="#8b5e34" stroke-width="5"/>
+
+  <rect x="70" y="520" width="1040" height="74" rx="16" fill="#fffaf2" stroke="#ceb997"/>
+  <text x="95" y="554" fill="#62584d" font-family="Georgia, serif" font-size="18">Both nuisance alarms and repeated misses can distort appropriate reliance.</text>
+  <text x="95" y="580" fill="#62584d" font-family="Georgia, serif" font-size="18">The design goal is calibrated trust, not maximal confidence.</text>
+</svg>
+
+
+
