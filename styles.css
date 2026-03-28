@@ -66,9 +66,9 @@ a {
 
 .hero-ornament {
   position: absolute;
-  top: 6.4rem;
+  top: 7.8rem;
   right: 2.2rem;
-  width: clamp(15.5rem, 22vw, 18.5rem);
+  width: clamp(18rem, 25vw, 21rem);
   pointer-events: none;
   z-index: 0;
 }
@@ -418,4 +418,5 @@ a {
     min-height: 11.5rem;
   }
 }
+
 
