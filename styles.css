@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #f4f0e8;
   --paper: #fffdf8;
   --text: #1e1b18;
@@ -66,71 +66,19 @@ a {
 
 .hero-ornament {
   position: absolute;
-  top: 3.4rem;
-  right: 2.6rem;
-  width: clamp(16rem, 23vw, 19rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
+  top: 6.4rem;
+  right: 2.2rem;
+  width: clamp(15.5rem, 22vw, 18.5rem);
   pointer-events: none;
-  opacity: 1;
   z-index: 0;
 }
 
-.hero-orbit,
-.hero-node,
-.hero-scan {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-}
-
-.hero-orbit-outer {
-  border: 2px solid rgba(139, 94, 52, 0.48);
-  box-shadow: 0 0 0 1.6rem rgba(139, 94, 52, 0.08);
-}
-
-.hero-orbit-middle {
-  inset: 1.15rem;
-  border: 1.2px solid rgba(139, 94, 52, 0.28);
-}
-
-.hero-orbit-inner {
-  inset: 2.4rem;
-  border: 1.2px dashed rgba(139, 94, 52, 0.28);
-}
-
-.hero-node {
-  inset: auto;
-  width: 0.55rem;
-  height: 0.55rem;
-  background: rgba(139, 94, 52, 0.82);
-  box-shadow: 0 0 0 0.22rem rgba(139, 94, 52, 0.12);
-}
-
-.hero-node-a {
-  top: 22%;
-  left: 20%;
-}
-
-.hero-node-b {
-  top: 31%;
-  right: 18%;
-}
-
-.hero-node-c {
-  right: 24%;
-  bottom: 20%;
-}
-
-.hero-scan {
-  inset: 18%;
-  border-top: 1.5px solid rgba(139, 94, 52, 0.3);
-  border-bottom: 1.5px solid rgba(139, 94, 52, 0.3);
-  border-left: 1px dashed rgba(139, 94, 52, 0.14);
-  border-right: 1px dashed rgba(139, 94, 52, 0.14);
-  border-radius: 45% 55% 48% 52% / 58% 42% 58% 42%;
-  opacity: 0.7;
-  transform: rotate(8deg);
+.hero-ornament-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.96;
+  filter: drop-shadow(0 18px 28px rgba(88, 60, 33, 0.08));
 }
 
 .header-inner > :not(.hero-ornament) {
@@ -470,3 +418,4 @@ a {
     min-height: 11.5rem;
   }
 }
+
