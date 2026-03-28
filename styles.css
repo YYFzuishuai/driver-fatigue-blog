@@ -58,50 +58,77 @@ a {
   overflow: hidden;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 3rem clamp(15rem, 20vw, 18rem) 3rem 3rem;
+  padding: 3rem clamp(17rem, 23vw, 20rem) 3rem 3rem;
   border: 1px solid rgba(214, 200, 177, 0.8);
   background: linear-gradient(145deg, rgba(255, 253, 248, 0.98), rgba(248, 241, 229, 0.94));
   box-shadow: var(--shadow);
 }
 
-.header-inner::before,
-.header-inner::after {
-  content: "";
+.hero-ornament {
   position: absolute;
-  pointer-events: none;
-}
-
-.header-inner::before {
-  top: 4.25rem;
-  right: 3.5rem;
-  width: clamp(13rem, 19vw, 16rem);
+  top: 3.8rem;
+  right: 2.8rem;
+  width: clamp(15rem, 22vw, 18rem);
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 1.5px solid rgba(139, 94, 52, 0.34);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 253, 248, 0.7),
-    0 0 0 1.2rem rgba(139, 94, 52, 0.05),
-    0 0 0 3rem rgba(139, 94, 52, 0.035);
-  background:
-    radial-gradient(circle at 50% 50%, rgba(139, 94, 52, 0.13) 0 0.55rem, transparent 0.6rem),
-    radial-gradient(circle at 30% 34%, rgba(139, 94, 52, 0.18) 0 0.18rem, transparent 0.22rem),
-    radial-gradient(circle at 70% 28%, rgba(139, 94, 52, 0.16) 0 0.18rem, transparent 0.22rem),
-    radial-gradient(circle at 76% 68%, rgba(139, 94, 52, 0.14) 0 0.16rem, transparent 0.2rem),
-    radial-gradient(circle at 24% 74%, rgba(139, 94, 52, 0.16) 0 0.16rem, transparent 0.2rem);
+  pointer-events: none;
   opacity: 0.95;
 }
 
-.header-inner::after {
-  top: 6rem;
-  right: 5rem;
-  width: clamp(9rem, 14vw, 11rem);
-  height: clamp(14rem, 21vw, 17rem);
+.hero-orbit,
+.hero-node,
+.hero-scan {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.hero-orbit-outer {
+  border: 1.8px solid rgba(139, 94, 52, 0.4);
+  box-shadow: 0 0 0 1.4rem rgba(139, 94, 52, 0.065);
+}
+
+.hero-orbit-middle {
+  inset: 1.15rem;
+  border: 1px solid rgba(139, 94, 52, 0.22);
+}
+
+.hero-orbit-inner {
+  inset: 2.4rem;
+  border: 1px dashed rgba(139, 94, 52, 0.22);
+}
+
+.hero-node {
+  inset: auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: rgba(139, 94, 52, 0.82);
+  box-shadow: 0 0 0 0.22rem rgba(139, 94, 52, 0.12);
+}
+
+.hero-node-a {
+  top: 22%;
+  left: 20%;
+}
+
+.hero-node-b {
+  top: 31%;
+  right: 18%;
+}
+
+.hero-node-c {
+  right: 24%;
+  bottom: 20%;
+}
+
+.hero-scan {
+  inset: 18%;
   border-top: 1.5px solid rgba(139, 94, 52, 0.3);
   border-bottom: 1.5px solid rgba(139, 94, 52, 0.3);
-  border-left: 1px dashed rgba(139, 94, 52, 0.16);
-  border-right: 1px dashed rgba(139, 94, 52, 0.16);
+  border-left: 1px dashed rgba(139, 94, 52, 0.14);
+  border-right: 1px dashed rgba(139, 94, 52, 0.14);
   border-radius: 45% 55% 48% 52% / 58% 42% 58% 42%;
-  opacity: 0.6;
+  opacity: 0.7;
   transform: rotate(8deg);
 }
 
@@ -198,12 +225,22 @@ a {
 
 .toc-card ol {
   margin: 0;
-  padding-left: 1.8rem;
-  font-variant-numeric: tabular-nums;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc-item;
 }
 
-.toc-card li::marker,
-.reference-list li::marker {
+.toc-card li {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  column-gap: 0.15rem;
+  align-items: start;
+  counter-increment: toc-item;
+}
+
+.toc-card li::before {
+  content: counter(toc-item) ".";
+  color: var(--text);
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1, "lnum" 1;
 }
@@ -331,15 +368,27 @@ a {
 
 .reference-list {
   max-width: 48rem;
-  padding-left: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: reference-item;
   font-size: 1rem;
-  font-variant-numeric: tabular-nums;
 }
 
 .reference-list li {
-  padding-left: 0.45rem;
-  text-indent: 0;
+  display: grid;
+  grid-template-columns: 2.8rem minmax(0, 1fr);
+  column-gap: 0.25rem;
+  align-items: start;
   line-height: 1.75;
+  counter-increment: reference-item;
+}
+
+.reference-list li::before {
+  content: counter(reference-item) ".";
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 .reference-list li + li {
@@ -364,8 +413,7 @@ a {
     padding-right: 3rem;
   }
 
-  .header-inner::before,
-  .header-inner::after {
+  .hero-ornament {
     display: none;
   }
 
