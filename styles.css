@@ -256,6 +256,7 @@ a {
 .toc-panel {
   position: sticky;
   top: 1.5rem;
+  align-self: start;
 }
 
 .toc-card,
@@ -266,7 +267,24 @@ a {
 }
 
 .toc-card {
+  max-height: calc(100vh - 3rem);
   padding: 1.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 94, 52, 0.4) rgba(214, 200, 177, 0.28);
+}
+
+.toc-card::-webkit-scrollbar {
+  width: 0.55rem;
+}
+
+.toc-card::-webkit-scrollbar-track {
+  background: rgba(214, 200, 177, 0.28);
+}
+
+.toc-card::-webkit-scrollbar-thumb {
+  background: rgba(139, 94, 52, 0.42);
+  border-radius: 999px;
 }
 
 .toc-card h2 {
