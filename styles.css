@@ -259,12 +259,30 @@ a {
   padding-bottom: 1rem;
 }
 
+.references-section h2 {
+  margin-bottom: 1.5rem;
+}
+
 .reference-list {
+  max-width: 48rem;
   padding-left: 1.4rem;
+  font-size: 1rem;
+}
+
+.reference-list li {
+  padding-left: 0.35rem;
+  text-indent: -0.2rem;
+  line-height: 1.75;
 }
 
 .reference-list li + li {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
+}
+
+.reference-list a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
 }
 
 .site-footer {
